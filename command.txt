@@ -1,0 +1,253 @@
+git config -l --show-origin
+
+git config --list
+
+git config --gloabal
+
+
+
+In your terminal, navigate to the repo you want to make the changes in.
+Execute git config --list to check current username & email in your local repo.
+Change username & email as desired. Make it a global change or specific to the local repo:
+git config [--global] user.name "Full Name"
+git config [--global] user.email "email@address.com"
+
+----------------
+ls -ls
+----------
+
+#Working with git command
+Note: $ it represent we have give some command in Git
+********************************
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning
+$ cd DemoApp2
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ ls -la
+total 4
+drwxr-xr-x 1 GASINGH 1049089 0 Nov  6 17:54 ./
+drwxr-xr-x 1 GASINGH 1049089 0 Nov  6 17:54 ../
+drwxr-xr-x 1 GASINGH 1049089 0 Nov  6 17:54 .git/
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ notepad++ README.md
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+
+$ git add README.md
+
+$ git commit -m "Initial Commit"
+[master (root-commit) 9d2f454] Initial Commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+
+$ git add .
+warning: LF will be replaced by CRLF in test2.js.
+The file will have its original line endings in your working directory
+
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Timer.js
+        new file:   test2.js
+
+
+
+$ git commit  -m "other files"
+[master 7cf9590] other files
+ 2 files changed, 42 insertions(+)
+ create mode 100644 Timer.js
+ create mode 100644 test2.js
+
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git remote -v
+
+
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git remote add origin https://github.com/8440Gau/training.git
+
+
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git remote -v
+origin  https://github.com/8440Gau/training.git (fetch)
+origin  https://github.com/8440Gau/training.git (push)
+
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git push -u origin master
+
+
+Note: -u is going to track relation between whats the local master origin have and what server have
+
+
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git push -u origin master
+To https://github.com/8440Gau/training.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/8440Gau/training.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git push origin master --force
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 841 bytes | 168.00 KiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0)
+To https://github.com/8440Gau/training.git
+ + 9206e9a...7cf9590 master -> master (forced update)
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ git push -u origin master --force
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+
+--------------------------------------------------
+git push -u origin master ==> this was giving error so i have used this git push origin master --force and its working
+
+https://github.com/rtyley/bfg-repo-cleaner/issues/29
+
+---------------------------------------------------
+
+
+=====================================
+Connecting using SSH
+
+GASINGH@DIN16005503 MINGW64 ~/Desktop/git/Learning/DemoApp2 (master)
+$ ssh-keygen -t rsa -b 4096 -C "8440gaurav@gmail.com"
+
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/gasingh/.ssh/id_rsa):
+Created directory '/c/Users/gasingh/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/gasingh/.ssh/id_rsa.
+Your public key has been saved in /c/Users/gasingh/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:46JJ40q9J/y5e7a2Lii+X5azK3V3oBjV7VDgzTbNiVU 8440gaurav@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|         ..+. ..E|
+|        ..oo.= . |
+|       .  .o* +  |
+|      .   ....   |
+|       oS. .     |
+|   .  ooo.. .    |
+|  ..+o*... .     |
+| ..o=Bo=+        |
+| .+=*=BX+o       |
+
+
+
+---------------------------------------------------
+
+
+
+$ ssh -T git@github.com
+
+The authenticity of host 'github.com (13.234.210.38)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'github.com,13.234.210.38' (RSA) to the list of known hosts.
+Hi 8440Gau! You've successfully authenticated, but GitHub does not provide shell access.
+
+====================================
+
+
+
+
+
+
+*********************************
+
+
+
+
+
+======================================================================
+https://github.com/desktop/desktop/issues/3684
+
+https://stackoverflow.com/questions/22844806/how-to-change-my-git-username-in-terminal
+
+https://github.com/8440Gau
+
+100553381
+===================================================
+1. setting up window envirnoment
+
+
+
+
+
+
+
+
+=================================================
+http.sslcainfo
+
+gitconfighttp.sslbackend=openssl
+
+========================================
+gitconfig
+==============================
+
+
+[http]
+	sslCAInfo = C:/Users/gasingh/AppData/Local/Programs/Git/mingw64/ssl/certs/ca-bundle.crt
+	sslBackend = openssl
+	sslVerify = false
+[diff "astextplain"]
+	textconv = astextplain
+[core]
+	autocrlf = true
+	fscache = true
+	symlinks = false
+[credential]
+	helper = manager
+
+
+
+
+=============================================
